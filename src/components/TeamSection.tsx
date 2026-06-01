@@ -4,7 +4,7 @@ import GeometricAfrica from "./GeometricAfrica";
 import ernestekiru from "@/assets/ernest_ekiru.png";
 import samuelmunyole from "@/assets/munyole_samuel.png";
 import edwardikoona from "@/assets/Ikoona_edward.png";
-import phionaagweng from "@/assets/team-phiona-moore.jpg";
+import phionaagweng from "@/assets/agweng_phiona.jpg";
 
 type Member = {
   name: string;
