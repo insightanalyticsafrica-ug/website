@@ -53,6 +53,35 @@ const BrandPillars = () => {
           </p>
         </div>
 
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          <div className="glass-dark rounded-2xl p-8 border-l-2 border-accent">
+            <p className="text-accent font-semibold text-xs tracking-widest uppercase mb-3 font-body">
+              Mission
+            </p>
+            <h3 className="font-heading text-2xl font-semibold text-primary-foreground mb-4">
+              Turning Data Into Impact
+            </h3>
+            <p className="text-primary-foreground/60 font-body leading-relaxed">
+              To transform Africa's data into actionable insights that drive evidence-based
+              decisions, improve public health, and empower communities.
+            </p>
+          </div>
+          <div className="glass-dark rounded-2xl p-8 border-l-2 border-teal">
+            <p className="text-teal font-semibold text-xs tracking-widest uppercase mb-3 font-body">
+              Vision
+            </p>
+            <h3 className="font-heading text-2xl font-semibold text-primary-foreground mb-4">
+              Africa's Hub for Data-Driven Innovation
+            </h3>
+            <p className="text-primary-foreground/60 font-body leading-relaxed">
+              To be Africa's leading hub for data-driven innovation, where analytics and research
+              fuel sustainable development, resilient health systems, and inclusive growth across
+              the continent.
+            </p>
+          </div>
+        </div>
+
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {values.map((value, index) => (
             <div

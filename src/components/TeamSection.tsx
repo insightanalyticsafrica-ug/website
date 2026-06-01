@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import GeometricAfrica from "./GeometricAfrica";
-import ernestekiru from "@/assets/team-ernest-peter.jpg";
-import samuelmunyole from "@/assets/team-samuel-ben.jpg";
-import edwardikoona from "@/assets/team-edward-ken.jpg";
+import ernestekiru from "@/assets/ernest_ekiru.png";
+import samuelmunyole from "@/assets/munyole_samuel.png";
+import edwardikoona from "@/assets/Ikoona_edward.png";
 import phionaagweng from "@/assets/team-phiona-moore.jpg";
 
 type Member = {
@@ -23,13 +23,13 @@ const team: Member[] = [
   {
     name: "Mr. Munyole Samuel",
     position: "Co-Founder",
-    photo: edwardikoona,
+    photo: samuelmunyole,
     // bio: "Drives partnerships and growth, connecting research insights to real-world impact across the continent.",
   },
   {
     name: "Mr. Ikoona Edward",
     position: "Co-Founder",
-    photo: samuelmunyole,
+    photo: edwardikoona,
     // bio: "Heads engineering and platform delivery, building the modeling infrastructure that powers our analytics work.",
   },
   {
