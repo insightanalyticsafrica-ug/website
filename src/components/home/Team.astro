@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import { team } from "../../data/site";
+---
+
+<section id="team" class="section" aria-labelledby="team-title">
+  <div class="container">
+    <h2 id="team-title" class="h2">The people you'll work with</h2>
+    <p class="lede intro">There are no junior hand-offs. The four founders do the work themselves.</p>
+    <ul>
+      {
+        team.map((m) => (
+          <li>
+            <Image src={m.photo} alt={m.name} width={480} class="photo" />
+            <p class="name">{m.name}</p>
+            <p class="role">{m.role}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .intro {
+    margin: 16px 0 48px;
+    max-width: 640px;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px 28px;
+  }
+  li {
+    text-align: center;
+  }
+  .photo {
+    width: 100%;
+    max-width: 260px;
+    margin-inline: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center 15%;
+    border-radius: 50%;
+    background: var(--soft);
+  }
+  .name {
+    margin-top: 18px;
+    font-size: 19px;
+    font-weight: 700;
+  }
+  .role {
+    color: var(--muted);
+  }
+</style>

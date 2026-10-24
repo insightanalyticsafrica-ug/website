@@ -1,0 +1,124 @@
+---
+import Logo from "./Logo.astro";
+import { navLinks } from "../data/site";
+import { url } from "../lib/url";
+---
+
+<header class="header">
+  <div class="container bar">
+    <a href={url("/")} class="home" aria-label="Insight Analytics Africa, home">
+      <Logo />
+    </a>
+
+    <nav aria-label="Primary" class="desktop-nav">
+      {navLinks.map((l) => <a href={url(l.href)}>{l.label}</a>)}
+      <a href={url("/#contact")} class="btn btn-dark">Talk to us</a>
+    </nav>
+
+    <details class="mobile-nav">
+      <summary aria-label="Menu">
+        <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </summary>
+      <nav aria-label="Primary" class="panel">
+        {navLinks.map((l) => <a href={url(l.href)}>{l.label}</a>)}
+        <a href={url("/#contact")} class="btn btn-dark">Talk to us</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  // Close the mobile menu after choosing a link (same-page #links don't reload the page).
+  document.querySelectorAll<HTMLDetailsElement>(".mobile-nav").forEach((menu) => {
+    menu.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).closest("a")) menu.open = false;
+    });
+  });
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar {
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .home {
+    text-decoration: none;
+  }
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .desktop-nav a:not(.btn) {
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .desktop-nav a:not(.btn):hover {
+    color: var(--green-2);
+  }
+  .mobile-nav {
+    display: none;
+  }
+
+  @media (max-width: 860px) {
+    .desktop-nav {
+      display: none;
+    }
+    .mobile-nav {
+      display: block;
+    }
+    summary {
+      list-style: none;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: var(--ink);
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    .mobile-nav[open] summary {
+      background: var(--soft);
+    }
+    .panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: var(--header-h);
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 16px 32px -16px rgba(20, 32, 27, 0.25);
+      padding: 8px var(--gutter) 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .panel a:not(.btn) {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .panel .btn {
+      margin-top: 16px;
+    }
+  }
+</style>

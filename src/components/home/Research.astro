@@ -1,0 +1,132 @@
+---
+// Layout follows concept A's "Selected research" section (featured study with its
+// figure, then text cards), restyled in the site's green palette.
+import { Image } from "astro:assets";
+import { caseStudies } from "../../data/caseStudies";
+import { url } from "../../lib/url";
+
+const [featured, ...rest] = caseStudies;
+const studyUrl = (slug: string) => url(`/case-studies/${slug}/`);
+---
+
+<section id="research" class="section research" aria-labelledby="research-title">
+  <div class="container">
+    <p class="eyebrow">Selected research</p>
+    <h2 id="research-title" class="title">Our findings, in brief</h2>
+
+    <article class="featured">
+      {
+        featured.image && (
+          <div class="figure">
+            <Image src={featured.image} alt={featured.imageAlt ?? ""} widths={[480, 720, 960]} sizes="(max-width: 1000px) 100vw, 600px" />
+          </div>
+        )
+      }
+      <div class="body">
+        <p class="eyebrow">{featured.category}</p>
+        <h3>{featured.cardTitle}</h3>
+        <p class="summary">{featured.summary}</p>
+        <a href={studyUrl(featured.slug)} class="arrow-link">Read the case study →</a>
+      </div>
+    </article>
+
+    <div class="cards">
+      {
+        rest.map((c) => (
+          <article class="card">
+            <p class="eyebrow">{c.category}</p>
+            <h3>{c.cardTitle}</h3>
+            <p class="summary">{c.summary}</p>
+            <div class="links">
+              <a href={studyUrl(c.slug)} class="arrow-link">Read the case study →</a>
+              {c.pdf && (
+                <a href={url(c.pdf)} class="arrow-link secondary" download>
+                  Download the manuscript (PDF)
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .research {
+    background: var(--research-bg);
+  }
+  .title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(32px, 3.6vw, 46px);
+    line-height: 1.15;
+    margin: 12px 0 48px;
+  }
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.22;
+  }
+  .summary {
+    color: var(--muted);
+  }
+  .featured {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .figure {
+    flex: 1 1 440px;
+    min-width: 0;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+  }
+  .figure :global(img) {
+    width: 100%;
+    border-radius: 8px;
+  }
+  .body {
+    flex: 1 1 440px;
+    min-width: 0;
+    padding: clamp(28px, 4vw, 48px);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    justify-content: center;
+  }
+  .body h3 {
+    font-size: clamp(24px, 2.4vw, 30px);
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: clamp(28px, 3.5vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .card h3 {
+    font-size: clamp(22px, 2vw, 26px);
+  }
+  .links {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+  }
+  .secondary {
+    color: var(--muted);
+  }
+</style>

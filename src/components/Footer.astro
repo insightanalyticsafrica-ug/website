@@ -1,0 +1,89 @@
+---
+import Logo from "./Logo.astro";
+import { navLinks, site } from "../data/site";
+import { caseStudies } from "../data/caseStudies";
+import { url } from "../lib/url";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container grid">
+    <div class="brand">
+      <Logo tone="light" />
+      <p>Biostatistics, disease modelling, research and monitoring &amp; evaluation from {site.location}.</p>
+    </div>
+    <nav aria-label="Footer">
+      <h2>Explore</h2>
+      <ul>
+        {navLinks.map((l) => <li><a href={url(l.href)}>{l.label}</a></li>)}
+        <li><a href={url("/#contact")}>Contact</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2>Research</h2>
+      <ul>
+        {caseStudies.map((c) => <li><a href={url(`/case-studies/${c.slug}/`)}>{c.cardTitle}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h2>Contact</h2>
+      <ul>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><a href={site.phoneHref}>{site.phone}</a></li>
+        <li>{site.location}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container legal">
+    <p>© {year} {site.name}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--green);
+    color: var(--on-green);
+    padding-top: 72px;
+    font-size: 15px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    padding-bottom: 56px;
+  }
+  .brand p {
+    margin-top: 16px;
+    max-width: 320px;
+  }
+  h2 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  a {
+    color: var(--white);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--gold);
+    text-decoration: underline;
+  }
+  .legal {
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    padding-block: 24px;
+    font-size: 14px;
+  }
+</style>
