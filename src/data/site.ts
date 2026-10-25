@@ -7,7 +7,7 @@ import phiona from "../assets/team/phiona-agweng.jpg";
 export const site = {
   name: "Insight Analytics Africa",
   description:
-    "Biostatistics, disease modelling, research and M&E consultancy based in Kampala, Uganda. We find out what actually works, and prove it.",
+    "An AI-first analytics startup in Kampala, Uganda. We use AI and machine learning to build models, systems and decision tools for health and development, backed by the statistical rigour to prove they work.",
   email: "insightanalyticsafrica@gmail.com",
   phone: "+256 784 013 274",
   phoneHref: "tel:+256784013274",
@@ -15,6 +15,7 @@ export const site = {
 };
 
 export const navLinks = [
+  { label: "Our AI", href: "/#ai" },
   { label: "Services", href: "/#services" },
   { label: "Research", href: "/#research" },
   { label: "About", href: "/#about" },
@@ -23,43 +24,59 @@ export const navLinks = [
 
 export const steps = [
   {
-    title: "Frame the question",
-    body: "We start with the decision you need to make, not the dataset you happen to have.",
+    title: "Frame the problem",
+    body: "We start with the decision you need to make, then ask whether AI is the right tool for it.",
   },
   {
-    title: "Design the study",
-    body: "Sampling, protocols and M&E frameworks built to answer that decision.",
+    title: "Prepare the data",
+    body: "Survey, clinical, programme and satellite data cleaned and joined into one reliable pipeline.",
   },
   {
-    title: "Model rigorously",
-    body: "Survival, spatial, transmission and machine-learning models, each checked against the others.",
+    title: "Build and validate",
+    body: "Machine-learning and statistical models compared side by side, and tested on data they have never seen.",
   },
   {
-    title: "Brief the decision-makers",
-    body: "Plain-language findings, figures and dashboards for the people who act on them.",
+    title: "Deploy and explain",
+    body: "Working tools, dashboards and plain-language briefings for the people who act on the results.",
   },
 ];
 
+// The first service is the headline offer and is shown larger on the home page.
 export const services = [
   {
+    title: "AI & machine learning solutions",
+    body: "Prediction, risk-stratification and forecasting models, from early disease detection to targeting scarce resources, validated before anyone relies on them.",
+  },
+  {
+    title: "AI-powered systems development",
+    body: "We use AI throughout development to build data systems, decision-support tools and dashboards faster, without cutting corners on testing.",
+  },
+  {
     title: "Disease modelling & surveillance",
-    body: "SEIR and spatio-temporal models that forecast outbreaks and test interventions before they are rolled out.",
+    body: "Hybrid machine-learning and SEIR models that forecast outbreaks and test interventions before they are rolled out.",
   },
   {
-    title: "Statistical modelling",
-    body: "Survival, frailty and regression models chosen for the question, built for correlated, recurrent and clustered data.",
-  },
-  {
-    title: "Data science & analytics",
-    body: "Machine-learning pipelines that join survey, clinical and satellite data, and dashboards decision-makers actually open.",
+    title: "Statistical modelling & research",
+    body: "Survival, frailty and regression models, study design and manuscripts ready for peer review.",
   },
   {
     title: "Monitoring & evaluation",
-    body: "Theories of change, indicator frameworks, sampling and impact evaluations that stand up to donor review.",
+    body: "Theories of change, indicator frameworks and impact evaluations, with AI to speed up analysis and reporting.",
+  },
+];
+
+export const aiPrinciples = [
+  {
+    title: "Validated, not just accurate",
+    body: "Every model is tested on data it has never seen. In our TB study, XGBoost scored highest in testing, but logistic regression held up best on new patients, so that is what we recommended.",
   },
   {
-    title: "Research & insight",
-    body: "Study design, protocol writing, secondary analysis and manuscripts ready for peer review.",
+    title: "Explainable to decision-makers",
+    body: "Clinicians, programme managers and funders need to know why a model flags a case. We favour models whose reasoning can be shown, and we show it.",
+  },
+  {
+    title: "Built for African data",
+    body: "Models trained and tested on local survey, clinical and climate data, designed to run where connectivity, budgets and staff time are limited.",
   },
 ];
 

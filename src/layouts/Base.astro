@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { title, description = site.description, shareImage = defaultShareImage } = Astro.props;
-const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Biostatistics, research & M&E`;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | AI, machine learning & biostatistics`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = await getImage({ src: shareImage, width: 1200, format: "jpg" });
 const ogImageUrl = new URL(ogImage.src, Astro.site);

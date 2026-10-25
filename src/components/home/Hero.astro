@@ -6,15 +6,17 @@ import { url } from "../../lib/url";
 
 <section class="hero">
   <div class="container">
-    <h1>We find out what actually works <span>and prove it.</span></h1>
+    <p class="eyebrow tag">AI-first analytics · Kampala, Uganda</p>
+    <h1>We build AI that works <span>and prove it.</span></h1>
     <div class="row">
       <p class="lede">
-        Insight Analytics Africa is a team of four biostatisticians in Kampala. We help health programmes, NGOs and
-        researchers learn which interventions change outcomes for real families.
+        Insight Analytics Africa is an AI startup founded by four biostatisticians. We use AI and machine learning to
+        build models, systems and decision tools for health and development, with the statistical rigour to show they
+        hold up in the real world.
       </p>
       <div class="ctas">
-        <a href={url("/#contact")} class="btn btn-gold">Plan a study with us</a>
-        <a href={url("/#research")} class="btn btn-outline">See our research</a>
+        <a href={url("/#contact")} class="btn btn-gold">Start an AI project</a>
+        <a href={url("/#ai")} class="btn btn-outline">How we use AI</a>
       </div>
     </div>
     <Image
@@ -31,7 +33,10 @@ import { url } from "../../lib/url";
 
 <style>
   .hero {
-    padding-top: clamp(40px, 6vw, 72px);
+    padding-block: clamp(40px, 6vw, 72px);
+  }
+  .tag {
+    margin-bottom: 18px;
   }
   h1 {
     font-weight: 800;

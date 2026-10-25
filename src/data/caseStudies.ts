@@ -28,7 +28,7 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "uganda-malaria-spatio-temporal-ml",
-    category: "Disease modelling · Uganda",
+    category: "Machine learning · Uganda",
     title: "Uganda malaria spatio-temporal machine learning",
     cardTitle: "Forecasting malaria hotspots with machine learning and a hybrid SEIR model",
     summary:
@@ -133,7 +133,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "tb-prediction-machine-learning-mulago",
-    category: "Clinical prediction · Kampala",
+    category: "Clinical AI · Kampala",
     title:
       "Evaluating machine-learning algorithms for predicting tuberculosis cases at Mulago National Referral Hospital",
     cardTitle: "Which machine-learning model should a hospital trust to flag TB early?",
