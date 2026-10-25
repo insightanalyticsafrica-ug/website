@@ -1,0 +1,71 @@
+---
+import { site } from "../../data/site";
+---
+
+<section id="contact" class="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="band">
+      <div class="text">
+        <h2 id="contact-title" class="h2">Let's find out what works for your programme.</h2>
+        <p>
+          A first conversation with a founder costs nothing. We'll tell you honestly whether the data can answer your
+          question, and whether we're the right team.
+        </p>
+      </div>
+      <div class="actions">
+        <a href={`mailto:${site.email}`} class="btn btn-dark">Email {site.email}</a>
+        <a href={site.phoneHref} class="phone">Call {site.phone}</a>
+        <p class="loc">{site.location}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding-block: clamp(56px, 7vw, 96px);
+  }
+  .band {
+    background: var(--gold);
+    border-radius: 32px;
+    padding: clamp(32px, 6vw, 80px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .text {
+    flex: 1 1 520px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .text p {
+    color: #2a2614;
+    font-size: 18px;
+    max-width: 620px;
+  }
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 100%;
+  }
+  .actions .btn {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+  .phone {
+    color: var(--ink);
+    font-weight: 700;
+    padding-inline: 4px;
+  }
+  .loc {
+    color: #2a2614;
+    padding-inline: 4px;
+  }
+</style>

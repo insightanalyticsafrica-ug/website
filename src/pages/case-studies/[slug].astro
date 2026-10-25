@@ -1,0 +1,265 @@
+---
+import type { GetStaticPaths } from "astro";
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import Contact from "../../components/home/Contact.astro";
+import { caseStudies, type CaseStudy } from "../../data/caseStudies";
+import { url } from "../../lib/url";
+
+export const getStaticPaths = (() =>
+  caseStudies.map((study) => ({ params: { slug: study.slug }, props: { study } }))) satisfies GetStaticPaths;
+
+interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props;
+const facts = [
+  { label: "Study area", value: study.studyArea },
+  { label: "Population", value: study.population },
+  { label: "Design", value: study.design },
+  { label: "Partners", value: study.partners },
+];
+---
+
+<Base title={study.cardTitle} description={study.summary} shareImage={study.image}>
+  <article>
+    <header class="intro">
+      <div class="container">
+        <a href={url("/#research")} class="back">← All research</a>
+        <p class="eyebrow">{study.category}</p>
+        <h1>{study.title}</h1>
+        <p class="lede">{study.summary}</p>
+      </div>
+    </header>
+
+    {
+      study.image && (
+        <div class="container">
+          <Image
+            src={study.image}
+            alt={study.imageAlt ?? ""}
+            widths={[640, 1024, 1280]}
+            sizes="(max-width: 1280px) 100vw, 1216px"
+            loading="eager"
+            class="hero-img"
+          />
+        </div>
+      )
+    }
+
+    <section class="container facts" aria-label="Study details">
+      <dl>
+        {
+          facts.map((f) => (
+            <div>
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <ul class="metrics" aria-label="Key numbers">
+        {
+          study.metrics.map((m) => (
+            <li>
+              <span class="value">{m.value}</span>
+              <span class="label">{m.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <div class="container prose">
+      {
+        study.sections.map((s) => (
+          <section>
+            <h2>{s.heading}</h2>
+            {s.body.map((p) => (
+              <p>{p}</p>
+            ))}
+          </section>
+        ))
+      }
+
+      {
+        study.figures && study.figures.length > 0 && (
+          <section>
+            <h2>Figures</h2>
+            <div class="figures">
+              {study.figures.map((f) => (
+                <figure>
+                  <Image src={f.image} alt={f.alt} widths={[480, 800]} sizes="(max-width: 760px) 100vw, 400px" />
+                  <figcaption>{f.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      {
+        (study.pdf || study.code) && (
+          <div class="resources">
+            {study.pdf && (
+              <a href={url(study.pdf)} class="btn btn-dark" download>
+                Download the manuscript (PDF)
+              </a>
+            )}
+            {study.code && (
+              <a href={study.code} class="btn btn-outline" rel="noopener">
+                View the code on GitHub
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </article>
+
+  <Contact />
+</Base>
+
+<style>
+  .intro {
+    padding-block: clamp(48px, 7vw, 88px) 40px;
+  }
+  .intro .container {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .back {
+    font-weight: 700;
+    text-decoration: none;
+    width: fit-content;
+  }
+  .back:hover {
+    text-decoration: underline;
+  }
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(30px, 4vw, 50px);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+  .hero-img {
+    width: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    border-radius: 28px;
+  }
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-block: 48px;
+  }
+  dl {
+    flex: 2 1 520px;
+    min-width: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 16px;
+  }
+  dl div {
+    background: var(--soft);
+    border-radius: 18px;
+    padding: 22px 24px;
+  }
+  dt {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-2);
+    margin-bottom: 6px;
+  }
+  dd {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .metrics {
+    flex: 1 1 320px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .metrics li {
+    background: var(--green);
+    color: var(--white);
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .value {
+    font-size: clamp(26px, 2.6vw, 34px);
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1.1;
+  }
+  .label {
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--on-green);
+  }
+  .prose {
+    max-width: 860px;
+    padding-bottom: 32px;
+  }
+  .prose section {
+    margin-bottom: 48px;
+  }
+  .prose h2 {
+    font-size: clamp(26px, 2.6vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    margin-bottom: 16px;
+  }
+  .prose p {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .prose p + p {
+    margin-top: 16px;
+  }
+  .figures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 24px;
+  }
+  figure {
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--white);
+  }
+  figure :global(img) {
+    width: 100%;
+    padding: 16px;
+  }
+  figcaption {
+    border-top: 1px solid var(--line);
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .resources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+</style>

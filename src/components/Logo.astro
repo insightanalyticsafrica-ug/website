@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import mark from "../assets/mark.png";
+
+interface Props {
+  tone?: "dark" | "light";
+}
+
+const { tone = "dark" } = Astro.props;
+---
+
+<span class:list={["logo", tone]}>
+  <Image src={mark} alt="" width={88} class="mark" />
+  <span class="word">Insight Analytics <span class="africa">Africa</span></span>
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mark {
+    width: 44px;
+    height: auto;
+  }
+  .word {
+    font-weight: 800;
+    font-size: 17px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    max-width: 9.5em;
+  }
+  .dark .word {
+    color: var(--ink);
+  }
+  .dark .africa {
+    color: var(--green-2);
+  }
+  .light .word {
+    color: var(--white);
+  }
+  .light .africa {
+    color: var(--gold);
+  }
+</style>

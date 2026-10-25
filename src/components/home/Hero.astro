@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+import hero from "../../assets/hero.jpg";
+import { url } from "../../lib/url";
+---
+
+<section class="hero">
+  <div class="container">
+    <h1>We find out what actually works <span>and prove it.</span></h1>
+    <div class="row">
+      <p class="lede">
+        Insight Analytics Africa is a team of four biostatisticians in Kampala. We help health programmes, NGOs and
+        researchers learn which interventions change outcomes for real families.
+      </p>
+      <div class="ctas">
+        <a href={url("/#contact")} class="btn btn-gold">Plan a study with us</a>
+        <a href={url("/#research")} class="btn btn-outline">See our research</a>
+      </div>
+    </div>
+    <Image
+      src={hero}
+      alt="Two analysts discussing data dashboards in a meeting room"
+      widths={[640, 1024, 1280]}
+      sizes="(max-width: 1280px) 100vw, 1216px"
+      loading="eager"
+      fetchpriority="high"
+      class="photo"
+    />
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: clamp(40px, 6vw, 72px);
+  }
+  h1 {
+    font-weight: 800;
+    font-size: clamp(42px, 6.4vw, 92px);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    max-width: 1100px;
+    margin-bottom: 28px;
+  }
+  h1 span {
+    color: var(--green-2);
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px 32px;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 40px;
+  }
+  .row .lede {
+    flex: 1 1 480px;
+    max-width: 640px;
+  }
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .photo {
+    width: 100%;
+    height: clamp(260px, 38vw, 540px);
+    object-fit: cover;
+    object-position: center 40%;
+    border-radius: 28px;
+  }
+</style>

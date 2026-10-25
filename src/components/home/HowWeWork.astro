@@ -1,0 +1,64 @@
+---
+import { steps } from "../../data/site";
+---
+
+<section class="section" aria-labelledby="how-title">
+  <div class="container">
+    <div class="section-head">
+      <h2 id="how-title" class="h2">From question to decision in four steps</h2>
+      <p>Every step is led by a founder, so you always know who is running your analysis.</p>
+    </div>
+    <ol>
+      {
+        steps.map((s, i) => (
+          <li class:list={{ last: i === steps.length - 1 }}>
+            <span class="num">{String(i + 1).padStart(2, "0")}</span>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  li {
+    background: var(--soft);
+    border-radius: 22px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .num {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--green-2);
+  }
+  h3 {
+    font-size: 22px;
+    font-weight: 700;
+  }
+  p {
+    color: var(--muted);
+  }
+  .last {
+    background: var(--green);
+    color: var(--white);
+  }
+  .last .num {
+    color: var(--gold);
+  }
+  .last p {
+    color: var(--on-green);
+  }
+</style>
