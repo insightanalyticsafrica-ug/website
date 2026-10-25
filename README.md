@@ -5,7 +5,7 @@ The company website, built with [Astro](https://astro.build) as a static site an
 
 ## Working on it
 
-Requires Node.js 22 or newer.
+Requires Node.js 22.23.4 or newer (24 recommended, see `.nvmrc`).
 
 ```sh
 npm install
