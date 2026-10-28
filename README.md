@@ -3,6 +3,9 @@
 The company website, built with [Astro](https://astro.build) as a static site and deployed to GitHub Pages at
 <https://insightanalyticsafrica-ug.github.io/website/>.
 
+**New here? Read [DOCUMENTATION.md](DOCUMENTATION.md)** for the project history, where everything
+lives, step-by-step guides for common changes, content rules and troubleshooting.
+
 ## Working on it
 
 Requires Node.js 22.23.4 or newer (24 recommended, see `.nvmrc`).
@@ -14,8 +17,9 @@ npm run build    # type-check, then build to dist/
 npm run preview  # serve the built site locally
 ```
 
-Pushing to `main` deploys automatically (`.github/workflows/deploy.yml`). In the repo's
-**Settings → Pages**, the source must be set to **GitHub Actions**.
+Every push is built by GitHub Actions (`.github/workflows/deploy.yml`); only `main` is deployed.
+Work on a branch and merge it through a pull request. In the repo's **Settings → Pages**, the
+source must be set to **GitHub Actions**.
 
 ## Where things live
 
