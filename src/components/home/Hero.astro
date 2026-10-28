@@ -1,23 +1,25 @@
 ---
 import { Image } from "astro:assets";
 import hero from "../../assets/hero.jpg";
-import { url } from "../../lib/url";
+// import { url } from "../../lib/url"; // needed again when the hero buttons below are restored
 ---
 
 <section class="hero">
   <div class="container">
-    <p class="eyebrow tag">AI-first analytics · Kampala, Uganda</p>
-    <h1>We build AI that works <span>and prove it.</span></h1>
+    <p class="eyebrow tag">AI-powered analytics · Kampala, Uganda</p>
+    <h1>We use AI to turn data into <span>decisions you can trust.</span></h1>
     <div class="row">
       <p class="lede">
-        Insight Analytics Africa is an AI startup founded by four biostatisticians. We use AI and machine learning to
-        build models, systems and decision tools for health and development, with the statistical rigour to show they
-        hold up in the real world.
+        Insight Analytics Africa is a data analytics and research company. We put today's AI tools to work to analyse
+        data, build systems and deliver research for health and development, and we check every result before anyone
+        relies on it.
       </p>
+      {/* Hidden for now. To restore, uncomment this block and the `url` import at the top.
       <div class="ctas">
         <a href={url("/#contact")} class="btn btn-gold">Start an AI project</a>
         <a href={url("/#ai")} class="btn btn-outline">How we use AI</a>
       </div>
+      */}
     </div>
     <Image
       src={hero}

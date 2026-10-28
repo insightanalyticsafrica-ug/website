@@ -7,7 +7,7 @@ import phiona from "../assets/team/phiona-agweng.jpg";
 export const site = {
   name: "Insight Analytics Africa",
   description:
-    "An AI-first analytics startup in Kampala, Uganda. We use AI and machine learning to build models, systems and decision tools for health and development, backed by the statistical rigour to prove they work.",
+    "A data analytics and research company in Kampala, Uganda. We use AI tools and machine learning to analyse data, build systems and deliver research for health and development, and we check every result before anyone relies on it.",
   email: "insightanalyticsafrica@gmail.com",
   phone: "+256 784 013 274",
   phoneHref: "tel:+256784013274",
@@ -15,7 +15,7 @@ export const site = {
 };
 
 export const navLinks = [
-  { label: "Our AI", href: "/#ai" },
+  { label: "AI in our work", href: "/#ai" },
   { label: "Services", href: "/#services" },
   { label: "Research", href: "/#research" },
   { label: "About", href: "/#about" },
